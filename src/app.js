@@ -1,8 +1,10 @@
 import express from "express";
 import { connectDatabase } from "./config/database-connect.js";
 import { rotasDosProjetos } from "./routes/index.js";
+import cors from 'cors';
 
 export const app = express();
+app.use(cors());
 rotasDosProjetos(app);
 
 const connection = await connectDatabase();
