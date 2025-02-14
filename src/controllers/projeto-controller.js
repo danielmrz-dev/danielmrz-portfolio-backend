@@ -5,7 +5,7 @@ export class ProjetoController {
 
     static async listaProjetos(req, res) {
         try {
-            const listaDeProjetos = await projeto.find({});
+            const listaDeProjetos = await projeto.find({}).sort({ _id: -1 });
             res.status(200).json(listaDeProjetos);
         } catch (error) {
             res.status(500).json({ mensagem: `${error} - Falha na requisição.` })
