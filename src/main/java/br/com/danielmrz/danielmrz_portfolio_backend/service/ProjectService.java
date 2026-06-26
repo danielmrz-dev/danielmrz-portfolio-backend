@@ -26,7 +26,13 @@ public class ProjectService {
     if (projectAlreadyRegistered) {
       throw new ProjectAlreadyExistsException("Um projeto com este nome já foi cadastrado.");
     }
-    Project project = new Project(newProject.name(), newProject.image());
+    Project project = new Project(
+      newProject.name(),
+      newProject.image(),
+      newProject.repositoryLink(),
+      newProject.liveSiteLink(),
+      newProject.technologies()
+    );
     return projectRepository.save(project);
   }
 
@@ -47,6 +53,9 @@ public class ProjectService {
     Project projectToUpdate = findProjectById(id);
     projectToUpdate.setName(updatedProject.name());
     projectToUpdate.setImage(updatedProject.image());
+    projectToUpdate.setRepositoryLink(updatedProject.repositoryLink());
+    projectToUpdate.setLiveSiteLink(updatedProject.liveSiteLink());
+    projectToUpdate.setTechnologies(updatedProject.technologies());
     return projectRepository.save(projectToUpdate);
   }
 }

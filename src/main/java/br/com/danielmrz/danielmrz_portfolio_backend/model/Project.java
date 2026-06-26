@@ -2,6 +2,8 @@ package br.com.danielmrz.danielmrz_portfolio_backend.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "projects")
 public class Project {
@@ -11,10 +13,23 @@ public class Project {
   private Long id;
   private String name;
   private String image;
+  private String repositoryLink;
+  private String liveSiteLink;
+  private List<Technologies> technologies;
 
-  public Project(String name, String image) {
+
+  public Project(
+    String name,
+    String image,
+    String repositoryLink,
+    String liveSiteLink,
+    List<Technologies> technologies
+  ) {
     this.name = name;
     this.image = image;
+    this.repositoryLink = repositoryLink;
+    this.liveSiteLink = liveSiteLink;
+    this.technologies = technologies;
   }
 
   public Project() {
@@ -42,5 +57,29 @@ public class Project {
 
   public void setImage(String image) {
     this.image = image;
+  }
+
+  public String getRepositoryLink() {
+    return repositoryLink;
+  }
+
+  public void setRepositoryLink(String repositoryLink) {
+    this.repositoryLink = repositoryLink;
+  }
+
+  public String getLiveSiteLink() {
+    return liveSiteLink;
+  }
+
+  public void setLiveSiteLink(String liveSiteLink) {
+    this.liveSiteLink = liveSiteLink;
+  }
+
+  public List<Technologies> getTechnologies() {
+    return technologies;
+  }
+
+  public void setTechnologies(List<Technologies> technologies) {
+    this.technologies = technologies;
   }
 }

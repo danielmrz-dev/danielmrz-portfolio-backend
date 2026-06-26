@@ -22,13 +22,18 @@ public class GlobalExceptionHandler {
     return ResponseEntity.status(status).body(error);
   }
 
+  @ExceptionHandler(Exception.class)
+  public ResponseEntity<DefaultErrorResponse> handleNotMappedException(Exception e) {
+    return buildResponse(e.getMessage(), HttpStatus.BAD_REQUEST);
+  }
+
   @ExceptionHandler(ProjectNotFoundException.class)
   public ResponseEntity<DefaultErrorResponse> projectNotFoundException(ProjectNotFoundException e) {
     return buildResponse(e.getMessage(), HttpStatus.NOT_FOUND);
   }
 
   @ExceptionHandler(ProjectAlreadyExistsException.class)
-  public ResponseEntity<DefaultErrorResponse> projectNotFoundException(ProjectAlreadyExistsException e) {
+  public ResponseEntity<DefaultErrorResponse> projectAlreadyExists(ProjectAlreadyExistsException e) {
     return buildResponse(e.getMessage(), HttpStatus.CONFLICT);
   }
 
