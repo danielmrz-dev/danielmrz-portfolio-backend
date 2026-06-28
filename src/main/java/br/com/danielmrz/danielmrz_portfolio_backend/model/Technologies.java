@@ -2,9 +2,16 @@ package br.com.danielmrz.danielmrz_portfolio_backend.model;
 
 public enum Technologies {
   TYPESCRIPT,
-  ANGULAR,
+  JAVASCRIPT,
   REACT,
+  ANGULAR,
+  ANGULAR_MATERIAL,
+  RXJS,
+  TAILWINDCSS,
   SASS,
+  NODEJS,
+  EXPRESS,
   JAVA,
-  SPRING
+  SPRING,
+  JWT,
 }
