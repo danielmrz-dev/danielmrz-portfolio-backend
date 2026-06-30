@@ -8,7 +8,9 @@ import br.com.danielmrz.danielmrz_portfolio_backend.repository.ProjectRepository
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProjectService {
@@ -17,7 +19,7 @@ public class ProjectService {
   private ProjectRepository projectRepository;
 
   public List<Project> getAllProjects() {
-    return projectRepository.findAll();
+    return projectRepository.findAll().stream().sorted(Comparator.comparing(Project::getName)).collect(Collectors.toList());
   }
 
   public Project saveProject(CreateProjectDTO newProject) {
